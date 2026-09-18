@@ -69,10 +69,11 @@ footer.note{font-size:12px;color:var(--grey);text-align:center;padding:20px;}
 .demo-banner a{color:#fff;text-decoration:underline}
 .demo-banner .x{position:absolute;right:10px;top:6px;background:none;border:none;color:#fff;font:inherit;cursor:pointer;opacity:.85;padding:4px 8px}
 .demo-banner .x:hover{opacity:1}
+.buildstamp{max-width:1180px;margin:0 auto;padding:4px 22px 30px;color:#8A9AA5;font-size:11px;letter-spacing:.04em;text-align:right}
 </style>
 </head>
 <body>
-<div class="demo-banner" id="demoBanner">DEMO — example data, add up to 15 of your own items and see whether it thinks the way you do. Nothing is saved permanently and it can reset any time. <a href="https://www.etsy.com/shop/LedgerLoopStudio" target="_blank" rel="noopener">Buy the full version</a> for your own unlimited, permanent copy.<button class="x" onclick="document.getElementById('demoBanner').style.display='none'" aria-label="Dismiss">✕</button></div>
+<div class="demo-banner" id="demoBanner">DEMO â example data, add up to 15 of your own items and see whether it thinks the way you do. Nothing is saved permanently and it can reset any time. <a href="https://www.etsy.com/shop/LedgerLoopStudio" target="_blank" rel="noopener">Buy the full version</a> for your own unlimited, permanent copy.<button class="x" onclick="document.getElementById('demoBanner').style.display='none'" aria-label="Dismiss">â</button></div>
 <div class="app" id="app"></div>
 
 <script id="engine">
@@ -201,7 +202,7 @@ var DEMO_MODE = true, DEMO_ITEM_LIMIT = 23; /* 8 seeded + 15 room to try adding 
 function demoLimitReached(){
   if(!DEMO_MODE) return false;
   if(!STATE || !STATE.items || STATE.items.length < DEMO_ITEM_LIMIT) return false;
-  alert("You've reached the "+DEMO_ITEM_LIMIT+"-item demo limit.\n\nThis is just a preview — buy the full version for unlimited items, all features unlocked, and your own permanent copy.");
+  alert("You've reached the "+DEMO_ITEM_LIMIT+"-item demo limit.\n\nThis is just a preview â buy the full version for unlimited items, all features unlocked, and your own permanent copy.");
   return true;
 }
 var CATEGORIES = ["Raw Materials","Finished Goods","Packaging","Merchandise","Supplies","Other"];
@@ -408,7 +409,7 @@ function viewMovements(type){
       el("td", {}, [m.date]),
       el("td", {}, [ item ? item.name : "(deleted item)" ]),
       el("td", {}, [String(m.qty)]),
-      el("td", {}, [ type === "purchase" ? formatMoney(m.unitCost, cur) : "—" ]),
+      el("td", {}, [ type === "purchase" ? formatMoney(m.unitCost, cur) : "â" ]),
       el("td", {}, [m.notes || ""])
     ]);
   });
@@ -563,7 +564,7 @@ function showMoveModal(app, type){
     el("div", { class: "field" }, [ el("label",{},["Item"]), itemSelect ]),
     el("div", { class: "field" }, [ el("label",{}, [ type === "purchase" ? "Quantity received" : "Quantity sold" ]), qtyInput ]),
   ];
-  if(type === "purchase") fields.push(el("div", { class: "field" }, [ el("label",{},["Unit cost (optional — updates weighted average)"]), costField ]));
+  if(type === "purchase") fields.push(el("div", { class: "field" }, [ el("label",{},["Unit cost (optional â updates weighted average)"]), costField ]));
   fields.push(el("div", { class: "field" }, [ el("label",{},["Date"]), dateInput ]));
   fields.push(el("div", { class: "field" }, [ el("label",{},["Notes"]), notesInput ]));
 
@@ -603,5 +604,6 @@ if(typeof window !== "undefined"){
 }
 })();
 </script>
+<div class="buildstamp noprint">Inventory Tracker &middot; build 2026-09-18 &middot; LedgerLoopStudio</div>
 </body>
 </html>
